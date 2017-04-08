@@ -54,10 +54,10 @@ public class MyFirstWebDriverTest {
 	public void dealKloudViaHome() {
 		driver.get("http://winekloud.codebnb.me");
 		driver.findElement(By.xpath("//a[@class='showDealsBtn']")).click();
-		String elementClass = driver.findElement(By.text("Deal Kloud")).getAttribute(class);
-		Assert.assertTrue("error", elementClass = "active");
-		Assert.assertTrue("With over 300 brand new Deals every day from more than 1,000 Wine Retailers");
-		
+		//String elementClass = driver.findElement(By.text("Deal Kloud")).getAttribute(class);
+		//Assert.assertTrue("error", elementClass = "active");
+		Assert.assertEquals("With over 300 brand new Deals every day from more than 1,000 Wine Retailers,", driver.findElement(By.xpath(//p[@contains='With over 300 brand new Deals every day from more than 1,000 Wine Retailers,'])));
+		driver.quit();
 	}
 
 }
