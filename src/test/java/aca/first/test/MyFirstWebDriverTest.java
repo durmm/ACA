@@ -40,6 +40,19 @@ public class MyFirstWebDriverTest {
 		driver.quit();
 		
 	}
+	
+	/*
+	 Test Case 2: Verify that Deal Kloud is available from the landing page
+	 Summary: Deal Kloud page should be available from the landing page via the button
+	 Steps: 1. Navigate to the http://winekloud.codebnb.me URL.
+	 		2. Click on the "Show me the Deals!" button.
+	 Expected Result: Deal Kloud page should be opened.
+	 */
+	
+	@Test
+	public void dealKloudViaHome() {
+		driver.get("http://winekloud.codebnb.me");
+	}
 
 }
 
