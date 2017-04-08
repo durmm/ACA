@@ -9,6 +9,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class MyFirstWebDriverTest {
 	
+	System.setProperty("webdriver.gecko.driver", "/home/transparency/geckodriver");
+	WebDriver driver = new FirefoxDriver();
+	
 	/*@Test()
 	public void myFirstTest(){
 		System.setProperty("webdriver.gecko.driver", "/home/transparency/geckodriver");
@@ -29,9 +32,7 @@ public class MyFirstWebDriverTest {
 	
 	@Test()
 	public void checkLandingPage(){
-		System.setProperty("webdriver.gecko.driver", "/home/transparency/geckodriver");
 		
-		WebDriver driver = new FirefoxDriver();
 		driver.get("http://winekloud.codebnb.me");
 		Assert.assertTrue("The Daily Wine Deal Marketplace", true);
 		Assert.assertTrue("ERROR: element not found", driver.findElement(By.xpath("//a[@class='showDealsBtn']"))!=null);
@@ -42,7 +43,7 @@ public class MyFirstWebDriverTest {
 	}
 	
 	/*
-	 Test Case 2: Verify that Deal Kloud is available from the landing page
+	 Test Case 2: Verify that Deal Kloud is available from the landing page.
 	 Summary: Deal Kloud page should be available from the landing page via the button
 	 Steps: 1. Navigate to the http://winekloud.codebnb.me URL.
 	 		2. Click on the "Show me the Deals!" button.
@@ -52,6 +53,11 @@ public class MyFirstWebDriverTest {
 	@Test
 	public void dealKloudViaHome() {
 		driver.get("http://winekloud.codebnb.me");
+		driver.findElement(By.xpath("//a[@class='showDealsBtn']")).click();
+		String elementClass = driver.findElement(By.text("Deal Kloud")).getAttribute(class);
+		Assert.assertTrue("error", elementClass = "active");
+		Assert.assertTrue("With over 300 brand new Deals every day from more than 1,000 Wine Retailers");
+		
 	}
 
 }
