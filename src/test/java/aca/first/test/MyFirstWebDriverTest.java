@@ -34,6 +34,7 @@ public class MyFirstWebDriverTest {
 		WebDriver driver = new FirefoxDriver();
 		driver.get("http://winekloud.codebnb.me");
 		Assert.assertTrue("The Daily Wine Deal Marketplace", true);
+		Assert.assertTrue("ERROR: element not found", driver.findElement(By.xpath("//a[@class='showDealsBtn']"))!=null);
 		driver.findElement(By.xpath("//a[@class='showDealsBtn']"));
 		driver.findElement(By.xpath("//div[@class='bottomNav']"));
 		driver.quit();
