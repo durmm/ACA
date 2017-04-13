@@ -1,17 +1,25 @@
 package aca.first.test;
 
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 public class MyFirstWebDriverTest {
 	
-	/*@Test()
+	WebDriver driver;
+	
+	@BeforeTest()
+	private void driverInit(){
+		System.setProperty("webdriver.gecko.driver", "/home/transparency/geckodriver");
+		driver = new FirefoxDriver();
+	}
+	
+	/*
+	@Test()
 	public void myFirstTest(){
 		System.setProperty("webdriver.gecko.driver", "/home/transparency/geckodriver");
 		
@@ -20,27 +28,26 @@ public class MyFirstWebDriverTest {
 		 driver.close();
 		 driver.quit();
 	}
+	*/
 	
+	/*
 	 Test Case 1: Verify that URL opens the correct web-page
 	 Summary: The http://winekloud.codebnb.me URL should open the projects main landing page
 	 Steps: 1. Navigate to the http://winekloud.codebnb.me URL.
 	 Expected Result: It should open the main landing page of the WineKloud project.
 	 */
 	
-	/*@Test()
-	public void checkLandingPage(){
-		System.setProperty("webdriver.gecko.driver", "/home/transparency/geckodriver");
-		
+	@Test()
+	public void checkLandingPage() {
 		driver.get("http://winekloud.codebnb.me");
 		Assert.assertTrue("The Daily Wine Deal Marketplace", true);
 		Assert.assertTrue("ERROR: element not found", driver.findElement(By.xpath("//a[@class='showDealsBtn']"))!=null);
 		driver.findElement(By.xpath("//a[@class='showDealsBtn']"));
 		driver.findElement(By.xpath("//div[@class='bottomNav']"));
-		driver.quit();
-		
+		driver.close();
+//		driver.quit();				
 	}
-	*/
-	
+		
 	/*
 	 Test Case 2: Verify that Deal Kloud is available from the landing page.
 	 Summary: Deal Kloud page should be available from the landing page via the button
@@ -48,26 +55,16 @@ public class MyFirstWebDriverTest {
 	 		2. Click on the "Show me the Deals!" button.
 	 Expected Result: Deal Kloud page should be opened.
 	 */
-	WebDriver driver ;
-	@BeforeSuite()
-	private void driverInit(){
-		System.setProperty("webdriver.gecko.driver", "/home/transparency/geckodriver");
-		 driver = new FirefoxDriver();
-	}
-	@Test
-	public void dealKloudViaHome() {
-		
+	
+	
+	@Test()
+	public void dealKloudViaHome() throws InterruptedException {		
 		driver.get("http://winekloud.codebnb.me");
-		driver.findElement(By.xpath("//a[@class='showDealsBtn']")).click();
-		
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		};
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[@class='showDealsBtn']")).click();				
 		//String elementClass = driver.findElement(By.text("Deal Kloud")).getAttribute(class);
 		//WebElement elem = driver.findElement(By.linkText("Deal Kloud"));
+		Thread.sleep(2000);
 		Assert.assertEquals("active", driver.findElement(By.linkText("Deal Kloud")).getAttribute("class"));
 		//String l = driver.findElement(By.xpath("//p[@class='hero_txt']")).getText();
 		//System.out.println(l);
@@ -76,8 +73,46 @@ public class MyFirstWebDriverTest {
 		Assert.assertTrue(textFound);
 //		Assert.assertEquals.getText()'
 		driver.close();
-		driver.quit();
+//		driver.quit();
+	}
+	
+//	@Test
+//	public void loginFromMyKloud() {
+//		
+//		driver.get("http://winekloud.codebnb.me");
+//		driver.findElement(By.xpath("//a[@class='showDealsBtn']")).click();
+//		driver.findElement(By.className("my_kloud")).click();
+//		driver.findElement(By.className("Wine Tracker")).click();
+//		Assert.assertEquals(driver.findElement(By.tagName("h4")).getText(), "Track a wine or retailer.");
+//		Assert.assertEquals(driver.findElement(By.className("forMembersOnly")).getText(), "(Free Account Required)");
+//		driver.findElement(By.className("txtBtn")).click();
+////		Assert.assertThat(driver.findElement(By.className("form-box-inner group")).isPresent);
+		
+//	}
+	
+	/*
+	 Test Case 3: Facebook link on home page bottom navigation menu
+	 Summary: The facebook icon onhoma page bottom navigation menu should open WineKloud facebook page
+	 Steps: 1. Navigate to the http://winekloud.codebnb.me URL;
+	 		2. Click on the facebook iconon bottom navigtion menu.
+	 Expected Result: WineKloud facebook page should be opened (facebook.com/winekloud)
+	 */
+	@Test
+	public void fbLinkHome() throws InterruptedException {
+		driver.get("http://winekloud.codebnb.me");
+		driver.findElement(By.xpath("//div[@class='clearAfter']/ul[2]/li[1]/a")).click();
+		Thread.sleep(2000);
+		Assert.assertEquals("https://www.facebook.com/winekloud", driver.getCurrentUrl());
+		driver.close();
+		driver.quit();	
 	}
 
 }
+
+//try {
+//	Thread.sleep(2000);
+//} catch (InterruptedException e) {
+//	// TODO Auto-generated catch block
+//	e.printStackTrace();
+//}
 
