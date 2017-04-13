@@ -5,7 +5,9 @@ import org.testng.annotations.Test;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 
 
 public class MyFirstWebDriverTest {
@@ -16,8 +18,8 @@ public class MyFirstWebDriverTest {
 	private void driverInit(){
 		System.setProperty("webdriver.gecko.driver", "/home/transparency/geckodriver");
 		driver = new FirefoxDriver();
-	}
-	
+	}	
+		
 	/*
 	@Test()
 	public void myFirstTest(){
@@ -96,6 +98,24 @@ public class MyFirstWebDriverTest {
 //		driver.quit();
 	}
 	
+	/*
+	 Test Case 4: Facebook link on home page bottom navigation menu
+	 Summary: The facebook icon on home page bottom navigation menu should open WineKloud facebook page
+	 Steps: 1. Navigate to the http://winekloud.codebnb.me URL;
+	 		2. Click on the facebook icon on bottom navigtion menu.
+	 Expected Result: WineKloud facebook page should be opened (facebook.com/winekloud)
+	 */
+	
+	@Test()
+	public void fbLinkHome() throws InterruptedException {
+		driver.get("http://winekloud.codebnb.me");
+		driver.findElement(By.xpath("//div[@class='clearAfter']/ul[2]/li[1]/a")).click();
+		Thread.sleep(2000);
+		Assert.assertEquals("https://www.facebook.com/winekloud", driver.getCurrentUrl());
+		driver.close();
+		driver.quit();	
+	}
+	
 //	@Test
 //	public void loginFromMyKloud() {
 //		
@@ -110,21 +130,27 @@ public class MyFirstWebDriverTest {
 		
 //	}
 	
-	/*
-	 Test Case 4: Facebook link on home page bottom navigation menu
-	 Summary: The facebook icon on home page bottom navigation menu should open WineKloud facebook page
-	 Steps: 1. Navigate to the http://winekloud.codebnb.me URL;
-	 		2. Click on the facebook icon on bottom navigtion menu.
-	 Expected Result: WineKloud facebook page should be opened (facebook.com/winekloud)
-	 */
-	@Test
-	public void fbLinkHome() throws InterruptedException {
+	@Test()
+	public void dealSearch() throws InterruptedException {
 		driver.get("http://winekloud.codebnb.me");
-		driver.findElement(By.xpath("//div[@class='clearAfter']/ul[2]/li[1]/a")).click();
+		driver.findElement(By.xpath("//a[@class='showDealsBtn']")).click();
 		Thread.sleep(2000);
-		Assert.assertEquals("https://www.facebook.com/winekloud", driver.getCurrentUrl());
-		driver.close();
-		driver.quit();	
+		driver.findElement(By.className("fa fa-search")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("srch-term")).sendKeys("some wine");
+		driver.findElement(By.xpath("//a[@class='close']")).click();
+		driver.findElement(By.xpath("//input[@type='checkbox'][1]")).click();
+		Assert.assertTrue(driver.findElement(By.xpath("//input[@type='checkbox'][1]")).isSelected());
+		driver.findElement(By.className("close open")).click();
+		driver.findElement(By.id("country")).sendKeys("some country");
+		driver.findElement(By.id("vintage")).sendKeys("no idea");
+		driver.findElement(By.id("state")).sendKeys("SS");
+//		WebElement priceMinRange = driver.findElement(By.xpath("//div[@class='range-inner group'][1]/span/span[6]"))
+		Actions move = new Actions(driver);
+		move.dragAndDropBy(driver.findElement(By.xpath("//div[@class='range-inner group'][1]/span/span[6]")), 20, 0).build().perform();
+		move.dragAndDropBy(driver.findElement(By.xpath("//div[@class='range-inner group'][1]/span/span[7]")), 50, 0).build().perform();
+		
+		
 	}
 
 }
