@@ -76,6 +76,26 @@ public class MyFirstWebDriverTest {
 //		driver.quit();
 	}
 	
+	/*
+	 Test Case 3: Contact page from home page bottom navigation menu
+	 Summary: The contact page should be opened from home page bottom navigation menu, providing 5 emails.
+	 Steps: 1. Navigate to the http://winekloud.codebnb.me URL.
+	 		2. Click on the "Contact" item on bottom navigation menu.
+	 Expected Result: It should open the contact page, providing 5 emails.
+	 */
+	
+	@Test()
+	public void contactViaHome() throws InterruptedException{
+		driver.get("http://winekloud.codebnb.me");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//div[@class='clearAfter']/ul[1]/li[3]/a")).click();
+		Thread.sleep(2000);
+		Assert.assertTrue(driver.findElement(By.xpath("//h1")).isDisplayed());
+		Assert.assertEquals(5, driver.findElements(By.xpath("//a[contains(@href, 'mailto')]")).size());
+		driver.close();
+//		driver.quit();
+	}
+	
 //	@Test
 //	public void loginFromMyKloud() {
 //		
@@ -91,10 +111,10 @@ public class MyFirstWebDriverTest {
 //	}
 	
 	/*
-	 Test Case 3: Facebook link on home page bottom navigation menu
-	 Summary: The facebook icon onhoma page bottom navigation menu should open WineKloud facebook page
+	 Test Case 4: Facebook link on home page bottom navigation menu
+	 Summary: The facebook icon on home page bottom navigation menu should open WineKloud facebook page
 	 Steps: 1. Navigate to the http://winekloud.codebnb.me URL;
-	 		2. Click on the facebook iconon bottom navigtion menu.
+	 		2. Click on the facebook icon on bottom navigtion menu.
 	 Expected Result: WineKloud facebook page should be opened (facebook.com/winekloud)
 	 */
 	@Test
