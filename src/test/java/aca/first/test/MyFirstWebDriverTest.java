@@ -115,20 +115,24 @@ public class MyFirstWebDriverTest {
 //		driver.quit();	
 	}
 	
-//	@Test
-//	public void loginFromMyKloud() {
-//		
-//		driver.get("http://winekloud.codebnb.me");
-//		driver.findElement(By.xpath("//a[@class='showDealsBtn']")).click();
-//		driver.findElement(By.className("my_kloud")).click();
-//		driver.findElement(By.className("Wine Tracker")).click();
-//		Assert.assertEquals(driver.findElement(By.tagName("h4")).getText(), "Track a wine or retailer.");
-//		Assert.assertEquals(driver.findElement(By.className("forMembersOnly")).getText(), "(Free Account Required)");
-//		driver.findElement(By.className("txtBtn")).click();
-////		Assert.assertThat(driver.findElement(By.className("form-box-inner group")).isPresent);
+//	Test Case 5:
+	/*	@Test
+	public void loginFromMyKloud() {
 		
-//	}
+		driver.get("http://winekloud.codebnb.me");
+		driver.findElement(By.xpath("//a[@class='showDealsBtn']")).click();
+		driver.findElement(By.className("my_kloud")).click();
+		driver.findElement(By.className("Wine Tracker")).click();
+		Assert.assertEquals(driver.findElement(By.tagName("h4")).getText(), "Track a wine or retailer.");
+		Assert.assertEquals(driver.findElement(By.className("forMembersOnly")).getText(), "(Free Account Required)");
+		driver.findElement(By.className("txtBtn")).click();
+		Assert.assertThat(driver.findElement(By.className("form-box-inner group")).isPresent);
+		
+	}*/
 	
+	/*
+	 Test Case 6:
+	 */ 
 	@Test()
 	public void dealSearch() throws InterruptedException {
 		driver.get("http://winekloud.codebnb.me");
@@ -142,9 +146,9 @@ public class MyFirstWebDriverTest {
 		Assert.assertTrue(driver.findElement(By.xpath("//input[@type='checkbox'][1]")).isSelected());
 		driver.findElement(By.className("close open")).click();
 		driver.findElement(By.id("country")).sendKeys("some country");
-		driver.findElement(By.id("vintage")).sendKeys("no idea");
+		driver.findElement(By.id("vintage")).sendKeys("1000");
 		driver.findElement(By.id("state")).sendKeys("SS");
-//		WebElement priceMinRange = driver.findElement(By.xpath("//div[@class='range-inner group'][1]/span/span[6]"))
+//		WebElement priceMinRange = driver.findElement(By.xpath("//div[@class='range-inner group'][1]/span/span[6]"));
 		Actions move = new Actions(driver);
 		move.dragAndDropBy(driver.findElement(By.xpath("//div[@class='range-inner group'][1]/span/span[6]")), 20, 0).build().perform();
 		move.dragAndDropBy(driver.findElement(By.xpath("//div[@class='range-inner group'][1]/span/span[7]")), 50, 0).build().perform();
