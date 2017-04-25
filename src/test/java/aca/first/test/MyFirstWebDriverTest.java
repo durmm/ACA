@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
@@ -113,7 +112,7 @@ public class MyFirstWebDriverTest {
 		Thread.sleep(2000);
 		Assert.assertEquals("https://www.facebook.com/winekloud", driver.getCurrentUrl());
 		driver.close();
-		driver.quit();	
+//		driver.quit();	
 	}
 	
 //	@Test
@@ -135,10 +134,10 @@ public class MyFirstWebDriverTest {
 		driver.get("http://winekloud.codebnb.me");
 		driver.findElement(By.xpath("//a[@class='showDealsBtn']")).click();
 		Thread.sleep(2000);
-		driver.findElement(By.className("fa fa-search")).click();
+		driver.findElement(By.xpath("//i[@class='fa fa-search']")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.id("srch-term")).sendKeys("some wine");
-		driver.findElement(By.xpath("//a[@class='close']")).click();
+		driver.findElement(By.xpath("//dt[@class='group']/a")).click();
 		driver.findElement(By.xpath("//input[@type='checkbox'][1]")).click();
 		Assert.assertTrue(driver.findElement(By.xpath("//input[@type='checkbox'][1]")).isSelected());
 		driver.findElement(By.className("close open")).click();
@@ -149,8 +148,11 @@ public class MyFirstWebDriverTest {
 		Actions move = new Actions(driver);
 		move.dragAndDropBy(driver.findElement(By.xpath("//div[@class='range-inner group'][1]/span/span[6]")), 20, 0).build().perform();
 		move.dragAndDropBy(driver.findElement(By.xpath("//div[@class='range-inner group'][1]/span/span[7]")), 50, 0).build().perform();
-		
-		
+		driver.findElement(By.xpath("//label[@for='Beef']")).click();
+		driver.findElement(By.id("sliding-go-button")).click();
+		Assert.assertTrue(driver.findElement(By.xpath("//*[text()[contains(., 'No deals exist')]]")).isDisplayed());
+		driver.close();
+		driver.quit();
 	}
 
 }
