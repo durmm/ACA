@@ -38,7 +38,7 @@ public class MyFirstWebDriverTest {
 	 Expected Result: It should open the main landing page of the WineKloud project.
 	 */
 	
-	@Test()
+/*	@Test()
 	public void checkLandingPage() {
 		driver.get("http://winekloud.codebnb.me");
 		Assert.assertTrue("The Daily Wine Deal Marketplace", true);
@@ -47,7 +47,7 @@ public class MyFirstWebDriverTest {
 		driver.findElement(By.xpath("//div[@class='bottomNav']"));
 		driver.close();
 //		driver.quit();				
-	}
+	}*/
 		
 	/*
 	 Test Case 2: Verify that Deal Kloud is available from the landing page.
@@ -58,7 +58,7 @@ public class MyFirstWebDriverTest {
 	 */
 	
 	
-	@Test()
+/*	@Test()
 	public void dealKloudViaHome() throws InterruptedException {		
 		driver.get("http://winekloud.codebnb.me");
 		Thread.sleep(2000);
@@ -75,7 +75,7 @@ public class MyFirstWebDriverTest {
 //		Assert.assertEquals.getText()'
 		driver.close();
 //		driver.quit();
-	}
+	}*/
 	
 	/*
 	 Test Case 3: Contact page from home page bottom navigation menu
@@ -84,7 +84,7 @@ public class MyFirstWebDriverTest {
 	 		2. Click on the "Contact" item on bottom navigation menu.
 	 Expected Result: It should open the contact page, providing 5 emails.
 	 */
-	
+/*	
 	@Test()
 	public void contactViaHome() throws InterruptedException{
 		driver.get("http://winekloud.codebnb.me");
@@ -95,7 +95,7 @@ public class MyFirstWebDriverTest {
 		Assert.assertEquals(5, driver.findElements(By.xpath("//a[contains(@href, 'mailto')]")).size());
 		driver.close();
 //		driver.quit();
-	}
+	}*/
 	
 	/*
 	 Test Case 4: Facebook link on home page bottom navigation menu
@@ -105,7 +105,7 @@ public class MyFirstWebDriverTest {
 	 Expected Result: WineKloud facebook page should be opened (facebook.com/winekloud)
 	 */
 	
-	@Test()
+	/*@Test()
 	public void fbLinkHome() throws InterruptedException {
 		driver.get("http://winekloud.codebnb.me");
 		driver.findElement(By.xpath("//div[@class='clearAfter']/ul[2]/li[1]/a")).click();
@@ -113,7 +113,7 @@ public class MyFirstWebDriverTest {
 		Assert.assertEquals("https://www.facebook.com/winekloud", driver.getCurrentUrl());
 		driver.close();
 //		driver.quit();	
-	}
+	}*/
 	
 //	Test Case 5:
 	/*	@Test
@@ -133,7 +133,7 @@ public class MyFirstWebDriverTest {
 	/*
 	 Test Case 6:
 	 */ 
-	@Test()
+/*	@Test()
 	public void dealSearch() throws InterruptedException {
 		driver.get("http://winekloud.codebnb.me");
 		driver.findElement(By.xpath("//a[@class='showDealsBtn']")).click();
@@ -155,6 +155,17 @@ public class MyFirstWebDriverTest {
 		driver.findElement(By.xpath("//label[@for='Beef']")).click();
 		driver.findElement(By.id("sliding-go-button")).click();
 		Assert.assertTrue(driver.findElement(By.xpath("//*[text()[contains(., 'No deals exist')]]")).isDisplayed());
+		driver.close();
+		driver.quit();
+	}*/
+	
+	@Test()
+	public void test() throws InterruptedException {
+		driver.get("http://winekloud.codebnb.me/deals");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//i[@class='fa fa-search']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("srch-term")).sendKeys("some wine");
 		driver.close();
 		driver.quit();
 	}

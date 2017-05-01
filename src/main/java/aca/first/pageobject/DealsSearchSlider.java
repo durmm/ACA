@@ -1,5 +1,6 @@
 package aca.first.pageobject;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DealsSearchSlider {
 	WebDriver driver = new FirefoxDriver();
+	
+	public WebElement expandIcon = driver.findElement(By.className("fa fa-search"));
 	
 	private WebElement keywordField = driver.findElement(By.id("srch-term"));
 	String keyword;
@@ -54,4 +57,11 @@ public class DealsSearchSlider {
 	private WebElement freeShipping = driver.findElement(By.xpath("//label[@for='free_shipping']"));
 	
 	private WebElement goButton = driver.findElement(By.id("sliding-go-button"));
+	
+	private WebElement collapseIcon = driver.findElement(By.className("fa fa-times"));
+	
+	public void expandSearchForm() {
+		expandIcon.click();
+		Assert.assertThat(actual, matcher);		
+	}
 }
