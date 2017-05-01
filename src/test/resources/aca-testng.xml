@@ -6,6 +6,7 @@
   <test name="Test" preserve-order="true">
     <classes>
        <class name="aca.first.test.MyFirstWebDriverTest" />
+       <class name="aca.first.test.DealsTests" />
     </classes>
   </test>
   </suite>
