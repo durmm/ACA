@@ -8,7 +8,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DealsSearchSlider {
 	WebDriver driver = new FirefoxDriver();
-	//efrwerwe
+	
+	public DealsSearchSlider(WebDriver driver){
+		this.driver = driver;		
+	}
 	
 	public WebElement expandIcon = driver.findElement(By.className("fa fa-search"));	
 	public WebElement keywordField = driver.findElement(By.id("srch-term"));
@@ -77,7 +80,7 @@ public class DealsSearchSlider {
 		Assert.assertTrue(barberaVariety.isSelected());
 	}
 	
-	public void enterCountry() {
+	public void enterCountry(String country) {
 		countryField.clear();
 		countryField.sendKeys(country);
 	}
